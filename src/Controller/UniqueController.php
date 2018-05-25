@@ -8,14 +8,22 @@
 
 namespace App\Controller;
 
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\Response;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-class UniqueController
+class UniqueController extends Controller
 {
+    /**
+     * @Route("/unique/show")
+     */
     public function showUnique(){
+        $unique = uniqid();
 
-        return new Response(
-           'Numéro unique :'. uniqid()
+        return $this->render('unique/showid.html.twig', array(
+            // unique will be used as a variale in our twig template
+            'unique' => $unique,
+        )
         );
     }
 }
