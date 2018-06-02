@@ -17,7 +17,8 @@ class UniqueController extends Controller
     /**
      * @Route("/unique/show")
      */
-    public function showUnique(){
+    public function showUnique()
+    {
         $unique = uniqid();
 
         return $this->render('unique/showid.html.twig', array(
@@ -25,5 +26,57 @@ class UniqueController extends Controller
             'unique' => $unique,
         )
         );
+    }
+
+
+    /**
+     * Match exactly /unique
+     *
+     * @Route({
+     *     "fr": "/unique",
+     *     "de": "/single"
+     * }, name="unique_liste")
+     */
+
+
+    public function list()
+    {
+        return $this->render('unique/unique.html.twig');
+
+    }
+
+    /**
+     * Match /unique/*
+     *
+     * @Route("/unique/{slug}", name="unique_showMore")
+     */
+    public function showMore()
+    {
+
+    }
+
+    /**
+     *
+     * Default page
+     *
+     * Match /unique/{page}
+     *
+     * The \d+ is a regular expression that matches a digit of any length
+     *
+     * @Route("/unique/{page}", name="unique_page", requirements={"page"="\d+"})
+     */
+    public function  liste($page = 1){
+
+    }
+
+    /**
+     * Match /unique/{page}
+     *
+     * The \d+ is a regular expression that matches a digit of any length
+     *
+     * @Route("/unique/{page}", name="unique_page", requirements={"page"="\d+"})
+     */
+    public function  listePage($page){
+
     }
 }
